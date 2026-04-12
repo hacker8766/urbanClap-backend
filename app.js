@@ -16,7 +16,7 @@ const User = require("./models/User");
 // =====================
 // 🔐 AUTH MIDDLEWARE
 // =====================
-const isLoggedIn =async (req, res, next) => {
+const isLoggedIn = async (req, res, next) => {
   if (req.isAuthenticated && req.isAuthenticated()) {
     return next();
   }
@@ -31,10 +31,13 @@ const isLoggedIn =async (req, res, next) => {
 // 🔥 MIDDLEWARE SETUP
 // =====================
 
-// CORS
+// 🔥 UPDATED CORS (supports local + production)
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://your-frontend.vercel.app" // 👉 replace with your real frontend URL
+    ],
     credentials: true,
   })
 );
@@ -43,7 +46,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// SESSION
+// 🔥 IMPORTANT FOR DEPLOYMENT (Render / Proxy)
+app.set("trust proxy", 1);
+
+// 🔥 UPDATED SESSION CONFIG
 app.use(
   session({
     secret: "mycode",
@@ -51,9 +57,14 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false, // true in production (HTTPS)
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
+
+      // ✅ dynamic based on environment
+      secure: process.env.NODE_ENV === "production",
+
+      // ✅ important for cross-origin cookies
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+
+      maxAge: 1000 * 60 * 60 * 24,
     },
   })
 );
@@ -72,7 +83,7 @@ passport.deserializeUser(User.deserializeUser());
 // 🔥 DATABASE
 // =====================
 mongoose
-  .connect("mongodb://127.0.0.1:27017/urbanClap")
+  .connect("mongodb+srv://himanshusingh11010_db_user:ui%40Ef_YPWBwfR9T@cluster0.7owfadc.mongodb.net/urbanClap?retryWrites=true&w=majority")
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.log("❌ DB Error:", err));
 
@@ -193,8 +204,6 @@ app.get("/Getcategory", async (req, res) => {
 // =====================
 // 📦 BUSINESS ROUTES
 // =====================
-
-// ALL BUSINESSES
 app.get("/GetBusinessList", async (req, res) => {
   try {
     const list = await BusinessList.find();
@@ -204,7 +213,6 @@ app.get("/GetBusinessList", async (req, res) => {
   }
 });
 
-// FILTER BY CATEGORY
 app.get("/GetBusinessByCategory/:category", async (req, res) => {
   try {
     const { category } = req.params;
@@ -221,7 +229,6 @@ app.get("/GetBusinessByCategory/:category", async (req, res) => {
   }
 });
 
-// GET BY ID
 app.get("/GetBusinessListById/:id", async (req, res) => {
   try {
     const business = await BusinessList.findById(req.params.id).populate("category");
@@ -234,11 +241,8 @@ app.get("/GetBusinessListById/:id", async (req, res) => {
 // =====================
 // 📦 BOOKING ROUTES
 // =====================
-
-// CREATE BOOKING (PROTECTED)
 app.post("/create-booking", async (req, res) => {
   try {
-    
     const bookingData = req.body;
 
     const booking = new Booking(bookingData);
@@ -258,11 +262,8 @@ app.post("/create-booking", async (req, res) => {
   }
 });
 
-// ADMIN DATA (PROTECTED)
 app.get("/admin-data", async (req, res) => {
   try {
-    console.log('user sign');
-    
     const bookings = await Booking.find()
       .populate("userId")
       .populate("businessList");

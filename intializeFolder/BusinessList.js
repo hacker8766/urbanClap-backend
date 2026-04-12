@@ -3,7 +3,7 @@ const BusinessList = require("../models/BusinessList");
 const Booking = require("../models/Booking");
 const Category = require("../models/Category");
 
-mongoose.connect("mongodb://127.0.0.1:27017/urbanClap")
+mongoose.connect("mongodb+srv://himanshusingh11010_db_user:ui%40Ef_YPWBwfR9T@cluster0.7owfadc.mongodb.net/urbanClap?retryWrites=true&w=majority")
 .then(() => console.log("DB Connected"))
 .catch((err) => console.log(err));
 

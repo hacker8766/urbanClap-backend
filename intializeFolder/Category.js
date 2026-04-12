@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const Category = require('../models/Category');
 
-const MONGO_URI = 'mongodb://127.0.0.1:27017/urbanClap';
+
+const MONGO_URI =  "mongodb+srv://himanshusingh11010_db_user:ui%40Ef_YPWBwfR9T@cluster0.7owfadc.mongodb.net/urbanClap?retryWrites=true&w=majority";
 
 const seedData = async () => {
     try {
@@ -86,4 +87,4 @@ const seedData = async () => {
     }
 };
 
-export default seedData;
+seedData();

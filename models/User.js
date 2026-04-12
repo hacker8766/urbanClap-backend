@@ -21,8 +21,6 @@ const userSchema = new mongoose.Schema(
       // match: [/.+\@.+\..+/, "Please enter a valid email"],
     },
 
-   
-
     phone: {
       type: String,
       required: [true, "Phone number is required"],

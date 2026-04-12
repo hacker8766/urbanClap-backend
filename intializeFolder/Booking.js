@@ -1,23 +1,27 @@
 const mongoose = require("mongoose");
 const Booking = require("../models/Booking");
 const Category = require("../models/Category")
+const User = require("../models/User")
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/urbanClap");
+  await mongoose.connect("mongodb+srv://himanshusingh11010_db_user:ui%40Ef_YPWBwfR9T@cluster0.7owfadc.mongodb.net/urbanClap?retryWrites=true&w=majority");
   console.log("Connected to DB");
-
+// mongodb+srv://himanshusingh11010_db_user:<db_password>@cluster0.7owfadc.mongodb.net/
 // Optional: clear old bookings
     await Booking.deleteMany({});
 
    // 👉 Replace with your real BusinessList IDs
     const Categorydta = await Category.find()
     const onlyData = Categorydta.map((el)=>el._id);
+    const userData = await User.find();
+    const userId = userData.map((el)=>el._id);
     // console.log(onlyData);
     
   
 
   const bookings = [
     {
+      userId:userId[0],
       userName: "Himanshu",
       userEmail: "himanshu@gmail.com",
       date: "2026-04-10",
@@ -26,6 +30,7 @@ async function main() {
       bookingStatus: "confirmed"
     },
     {
+      userId:userId[1],
       userName: "Rahul",
       userEmail: "rahul@gmail.com",
       date: "2026-04-11",
@@ -34,6 +39,7 @@ async function main() {
       bookingStatus: "pending"
     },
     {
+      userId:userId[2],
       userName: "Amit",
       userEmail: "amit@gmail.com",
       date: "2026-04-12",
@@ -42,6 +48,7 @@ async function main() {
       bookingStatus: "completed"
     },
     {
+      userId:userId[0],
       userName: "Priya",
       userEmail: "priya@gmail.com",
       date: "2026-04-13",
@@ -50,6 +57,7 @@ async function main() {
       bookingStatus: "confirmed"
     },
     {
+      userId:userId[1],
       userName: "Sneha",
       userEmail: "sneha@gmail.com",
       date: "2026-04-14",
@@ -58,6 +66,7 @@ async function main() {
       bookingStatus: "cancelled"
     },
     {
+      userId:userId[2],
       userName: "Karan",
       userEmail: "karan@gmail.com",
       date: "2026-04-15",
@@ -66,6 +75,7 @@ async function main() {
       bookingStatus: "pending"
     },
     {
+      userId:userId[0],
       userName: "Neha",
       userEmail: "neha@gmail.com",
       date: "2026-04-16",
@@ -74,6 +84,7 @@ async function main() {
       bookingStatus: "confirmed"
     },
     {
+      userId:userId[1],
       userName: "Rohit",
       userEmail: "rohit@gmail.com",
       date: "2026-04-17",
@@ -82,6 +93,7 @@ async function main() {
       bookingStatus: "completed"
     },
     {
+      userId:userId[2],
       userName: "Anjali",
       userEmail: "anjali@gmail.com",
       date: "2026-04-18",
@@ -90,6 +102,7 @@ async function main() {
       bookingStatus: "pending"
     },
     {
+      userId:userId[1],
       userName: "Vikas",
       userEmail: "vikas@gmail.com",
       date: "2026-04-19",
@@ -104,9 +117,9 @@ async function main() {
   console.log("10 Bookings Inserted");
 }
 
-// main()
-//   .then(() => {
-//     mongoose.connection.close();
-//   })
-//   .catch((err) => console.log(err));
-export default main;
+main()
+  .then(() => {
+    mongoose.connection.close();
+  })
+  .catch((err) => console.log(err));
+// export default main;
