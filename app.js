@@ -69,7 +69,7 @@ app.use(
   })
 );
 
-// =====================
+// ===========
 // 🔥 PASSPORT SETUP
 // =====================
 app.use(passport.initialize());
@@ -244,9 +244,12 @@ app.get("/GetBusinessListById/:id", async (req, res) => {
 app.post("/create-booking", async (req, res) => {
   try {
     const bookingData = req.body;
+    console.log("1");
 
     const booking = new Booking(bookingData);
+    console.log("2");
     const savedBooking = await booking.save();
+    console.log("3");
 
     res.status(201).json({
       success: true,
