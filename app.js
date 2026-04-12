@@ -37,7 +37,8 @@ app.use(
     origin: [
       "http://localhost:5173",
       
-      "https://urbanclap-frontend.vercel.app/" // 👉 replace with your real frontend URL
+      "https://urbanclap-frontend.vercel.app/" ,
+      "https://urbanclap-frontend.vercel.app"// 👉 replace with your real frontend URL
     ],
     credentials: true,
   })
