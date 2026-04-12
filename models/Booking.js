@@ -12,7 +12,7 @@ const BookingSchema = new mongoose.Schema(
     // 👇 snapshot fields
     userName: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
 
