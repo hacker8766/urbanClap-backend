@@ -99,6 +99,24 @@ Hi, I’m **Himanshu** 👋
 
 ## 📂 Project Structure
 
+
+
+
+---
+
+## 👨‍💻 Vansh Singh
+
+Hi, I'm **Vansh Singh** 👋
+
+### 💻 Role: Frontend Contributor
+
+- 🎨 Contributed to **UI development** using React.js
+- 📱 Worked on **responsive design** for better user experience
+- 🔗 Assisted in **API integration** between frontend & backend
+- ⚡ Improved **layout and styling** using Tailwind CSS
+- 🧩 Supported team in building a **clean and user-friendly interface**
+
+---
 ```
 urbanClap/
 │── models/
