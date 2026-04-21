@@ -117,6 +117,16 @@ Hi, I'm **Vansh Singh** 👋
 - 🧩 Supported team in building a **clean and user-friendly interface**
 
 ---
+## 👨‍💻 Tarun Kumar
+
+Hi,I'm Tarun Kumar
+
+Role - Tester & Architecture Designer
+
+- Responsible for testing the application and identifying bugs
+- Designed the overall system architecture
+- Ensured smooth integration between frontend and backend
+- Improved performance and reliability of the system
 
 ## 👨‍💻 Mohammed Atif
 Hi, I'm **Mohammed Atif** 👋
