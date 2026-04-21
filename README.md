@@ -117,6 +117,17 @@ Hi, I'm **Vansh Singh** 👋
 - 🧩 Supported team in building a **clean and user-friendly interface**
 
 ---
+
+## 👨‍💻 Mohammed Atif
+Hi, I'm **Mohammed Atif** 👋
+
+### 💻 Role: Backend Developer – Testing & Documentation
+
+- 🧪 Developed **unit** and **API test cases** for backend endpoints
+- 📄 Created **structured API documentation** for all routes
+- ⚙️ Improved **API reliability** and **Error Handling**
+- 📈 Implemented **analytics** for **service usage and trends**
+
 ```
 urbanClap/
 │── models/
