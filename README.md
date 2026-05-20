@@ -96,6 +96,15 @@ Hi, I’m **Himanshu** 👋
 * 🔄 Handled session management and security
 
 ---
+👨‍💻 My Role
+
+Tarun Kumar 
+
+
+- Developed the user interface for the UrbanClap platform  
+- Designed responsive and user-friendly web pages  
+- Integrated frontend with backend APIs for seamless booking experience  
+- Focused on performance optimization and smooth user experience
 
 ## 📂 Project Structure
 
